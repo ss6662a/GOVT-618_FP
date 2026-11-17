@@ -141,9 +141,14 @@ term_tbl <- jus %>% group_by(term) %>%
 
 #### Data list for runjags ----
 dat <- list(
-  N = nrow(jus), y = jus$jdir,
-  case = jus$case, just = jus$just, term = jus$term,
-  nCase = max(jus$case), nJust = max(jus$just), nTerm = max(jus$term),
+  N = nrow(jus), 
+  y = jus$jdir,
+  case = jus$case,
+  just = jus$just,
+  term = jus$term,
+  nCase = max(jus$case),
+  nJust = max(jus$just),
+  nTerm = max(jus$term),
   R = jlook$R, X = X, K = ncol(X)
 )
 

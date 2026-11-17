@@ -1,13 +1,13 @@
 
 
-set.seed(111426)
+set.seed(618)
 
 # Params ----
 
-nChains = 1
+nChains = 3
 burnIn = 1000
-thin = 2
-nDraws = 2000
+thin = 1
+nDraws = 5000
 
 # Model ----
 

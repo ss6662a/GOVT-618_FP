@@ -18,3 +18,23 @@ ggplot(gamma_tbl, aes(term_year, mean)) +
   geom_hline(yintercept = 0, linetype = "dashed") +
   labs(x = "Term", y = expression(gamma[t]),
        title = "Estimated effect of appointing party on conservative votes")
+
+
+# ----
+
+draws <- as.matrix(post)   # rows = posterior draws, columns = parameters
+
+# Helper: summarize one or more columns of draws
+summ <- function(mat) {
+  tibble(
+    mean   = colMeans(mat),
+    sd     = apply(mat, 2, sd),               # posterior SD (the "error")
+    lo95   = apply(mat, 2, quantile, 0.025),
+    hi95   = apply(mat, 2, quantile, 0.975),
+    p_pos  = colMeans(mat > 0)                # P(parameter > 0)
+  )
+}
+
+# Convergence diagnostics for every monitored parameter
+rhat <- gelman.diag(post, multivariate = FALSE)$psrf[, "Point est."]
+ess  <- effectiveSize(post)
