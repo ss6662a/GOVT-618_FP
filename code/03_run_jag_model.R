@@ -32,3 +32,18 @@ effectiveSize(post[, c("sd.a", "sd.b", "sd.gamma")])
 plot(post[, c("sd.gamma", "sd.a", "sd.b")]) # trace plots
 
 
+# to save MCMC draws ----
+
+# Save the posterior draws
+#dir.create("output", showWarnings = FALSE)
+#saveRDS(post, "output/post_prelim.rds")
+
+# Later, in a new session
+#library(coda)                      # load coda first so the mcmc.list class is recognized
+#post <- readRDS("output/post_prelim.rds")
+
+
+
+
+
+
